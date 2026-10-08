@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ejercicio 4 HTML</title>
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenido</h1>
+      <p>este es el ejercicio 4 de HTML</p>
+    </header>
+
+    <main>
+        <h2>Acerca de Nosotros</h2>
+        <p>en el ejercicio 4 de HTML tenemos que usar las siguientes
+etiquetas HTML: &lt;table&gt;, &lt;caption&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;colgroup&gt;, &lt;col&gt;,
+&lt;tbody&gt;, &lt;thead&gt;, &lt;tfoot&gt; y los atributos rowspan y colspan según sea
+necesario.</p>
+    </main>
+
+    <section id="horario">
+      <h2>Horario del modulo de DAW-1 A</h2>
+      <p>nuestro horario es de lunes a viernes de 8:15 AM a 14: PM.</p>
+
+        <table border="1" cellspacing="0" 
+        cellpadding="12" style="width: 100%; text-align: center;">
+            <caption>Horario Semanal - DAW-1 A</caption>
+            <colgroup>
+                <col class="col-tramo">
+                <col class="col-lunes">
+                <col class="col-martes">
+                <col class="col-miercoles">
+                <col class="col-jueves">
+                <col class="col-viernes">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>hora/dias</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>08:15 - 09:15</td>
+                    <td rowspan="2">Programación</td>
+                    <td>Sistemas Informáticos</td>
+                    <td rowspan="2">Bases de Datos</td>
+                    <td>Lenguajes de Marcas</td>
+                    <td>Entornos de Desarrollo</td>
+                </tr>
+                <tr>
+                    <td>09:15 - 10:15</td>
+                    <td>Sostenibilidad</td>
+                    <td>Lenguajes de Marcas</td>
+                    <td>Entornos de Desarrollo</td>
+                </tr>
+                <tr>
+                    <td>10:15 - 11:15</td>
+                    <td>Sistemas Informáticos</td>
+                    <td>Bases de Datos</td>
+                    <td>Programación</td>
+                    <td>Sistemas Informáticos</td>
+                    <td>IPE</td>
+                </tr>
+
+                <tr>
+                    <td>11:15 - 11:45</td>
+                    <td colspan="5" class="recreo">RECREO</td>
+                </tr>
+
+                <tr>
+                    <td>11:45 - 12:45</td>
+                    <td>Bases de Datos</td>
+                    <td rowspan="2">Programación</td>
+                    <td>Sistemas Informáticos</td>
+                    <td rowspan="2">Bases de Datos</td>
+                    <td>Lenguajes de Marcas</td>
+                </tr>
+                <tr>
+                    <td>12:45 - 13:45</td>
+                    <td>Entornos de Desarrollo</td>
+                    <td>IPE</td>
+                    <td>Sostenibilidad</td>
+                </tr>
+                <tr>
+                    <td>13:45 - 14:45</td>
+                    <td>Lenguajes de Marcas</td>
+                    <td>Sistemas Informáticos</td>
+                    <td>Programación</td>
+                    <td>Entornos de Desarrollo</td>
+                    <td>Bases de Datos</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="6">Año Académico: 2026/2027 - Horario sujeto a cambios.</td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </section>
+
+    <footer>
+      <h2 id="contacto">Contacto</h2> <br>
+      <a href="mailto:mhatimaarab@gmail.com" target="_blank">contactanos por correo electrónico</a><br>
+      <a href="https://www.linkedin.com/in/exotic33066110312744" target="_blank">visita nuestro perfil de LinkedIn</a><br>
+      <a href="tel:+34614396660" target="_blank">Llamanos</a><br>
+      <h6>© 2026 Todos los derechos reservados</h6>
+    </footer>
+  </body>
+</html>
