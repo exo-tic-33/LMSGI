@@ -1,0 +1,60 @@
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+#hero {
+    background-image: url('imagen1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 30vh 2rem;          /* Ajusta el padding para centrar verticalmente */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    color: #ffffff;        /* Centra horizontalmente */
+    height: 100vh;                   /* Asegura que ocupe toda la altura */
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  /*  Separación con el párrafo mediante margen */
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  
+  /*  Máximo 60 caracteres por línea y caja centrada con márgenes laterales automáticos */
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+
+  /*  Separación con el botón mediante margen */
+  margin-bottom: 2rem;
+}
+
+.hero-button {
+  display: inline-block;
+  
+  /*  Color de fondo, relleno, bordes redondeados y sin subrayado */
+  background-color: #c63799; /* Verde montaña */
+  color: #ffffff;
+  padding: 0.85rem 1.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none; /* Elimina el borde gris por defecto si usas <button> */
+  
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #d1369b;
+}
