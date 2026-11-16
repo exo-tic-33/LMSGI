@@ -1,60 +1,121 @@
+/* 
+  Esto estahecho por mi pero le he pedido a gemini que me lo explique y
+   me lo haga mas entendible y con comentarios para que yo pueda entenderlo mejor.
+  
+  ==========================================================================
+   1. RESET Y ESTILOS BASE
+   Preparan el terreno para que todos los navegadores se comporten igual.
+   ========================================================================== */
+
+* {
+  /* Hace que el padding y el borde se incluyan dentro del ancho/alto total 
+     de las cajas, evitando desbordamientos inesperados. */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  /* Usa la fuente nativa del dispositivo (iOS, Android, Windows) para carga instantánea */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Espacio entre líneas de texto (1.6 veces el tamaño de letra) para lectura cómoda */
   line-height: 1.6;
 }
 
+
+/* ==========================================================================
+   2. CONTENEDOR PRINCIPAL (#hero)
+   La sección de bienvenida que ocupa la pantalla inicial.
+   ========================================================================== */
+
 #hero {
-    background-image: url('imagen1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  /* --- FONDO Y CONTRASTE --- */
+  /* Combinamos un degradado oscuro semitransparente (rgba) ENCIMA de la imagen.
+     Así el texto blanco siempre resalta aunque la foto tenga partes claras. */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url('imagen1.jpg');
+  
+  background-size: cover;       /* Escala la imagen para cubrir toda la caja sin deformarse */
+  background-position: center;  /* Mantiene el centro de la foto visible al recortar bordes */
+  background-repeat: no-repeat; /* Evita que la foto se repita como mosaico */
 
-    padding: 30vh 2rem;          /* Ajusta el padding para centrar verticalmente */
+  /* --- DIMENSIONES Y ESPACIADO SEGURO --- */
+  /* min-height (en lugar de height fijo) asegura que ocupe al menos el 100% 
+     de la pantalla, pero permite crecer si el texto es muy largo en móviles. */
+  min-height: 100vh;
+  
+  /* Margen interno seguro: 2rem arriba/abajo y 1.5rem a los lados para que 
+     el texto nunca toque los bordes del teléfono. */
+  padding: 2rem 1.5rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  /* --- ALINEACIÓN CON FLEXBOX --- */
+  display: flex;                /* Activa el diseño flexible */
+  flex-direction: column;       /* Apila los elementos uno debajo de otro (en columna) */
+  justify-content: center;      /* Centra los elementos en el eje principal (vertical) */
+  align-items: center;          /* Centra los elementos en el eje cruzado (horizontal) */
+  text-align: center;           /* Centra las líneas de texto dentro de cada bloque */
 
-    color: #ffffff;        /* Centra horizontalmente */
-    height: 100vh;                   /* Asegura que ocupe toda la altura */
+  color: #ffffff;               /* Color blanco heredado por todos los textos internos */
 }
 
+
+/* ==========================================================================
+   3. ELEMENTOS INTERNOS DEL HERO
+   ========================================================================== */
+
 .hero-title {
-  font-size: 2.5rem;
-  /*  Separación con el párrafo mediante margen */
-  margin-bottom: 1rem;
+  /* clamp(mínimo, ideal, máximo): El texto mide 5% del ancho de pantalla (5vw),
+     pero nunca bajará de 2rem (32px) ni subirá de 3.5rem (56px). */
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.2;             /* Los títulos grandes se ven mejor con menos interlineado */
+  margin-bottom: 1rem;          /* Empuja el párrafo hacia abajo */
 }
 
 .hero-description {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   
-  /*  Máximo 60 caracteres por línea y caja centrada con márgenes laterales automáticos */
+  /* 'ch' equivale al ancho del carácter "0". 60ch es el ancho ideal 
+     para que el ojo humano lea sin cansarse. */
   max-width: 60ch;
-  margin-left: auto;
-  margin-right: auto;
-
-  /*  Separación con el botón mediante margen */
-  margin-bottom: 2rem;
+  margin-bottom: 2rem;          /* Separa el texto del botón */
+  opacity: 0.92;                /* Suaviza ligeramente el blanco para dar jerarquía al título */
 }
 
 .hero-button {
-  display: inline-block;
+  display: inline-block;        /* Permite aplicar padding vertical sin ocupar 100% de ancho */
   
-  /*  Color de fondo, relleno, bordes redondeados y sin subrayado */
-  background-color: #c63799; /* Verde montaña */
+  /* Apariencia visual */
+  background-color: #c63799;    /* Color magenta vibrante (antes decía verde en el comentario) */
   color: #ffffff;
-  padding: 0.85rem 1.8rem;
-  border-radius: 6px;
-  text-decoration: none;
-  border: none; /* Elimina el borde gris por defecto si usas <button> */
+  padding: 0.9rem 2rem;         /* Espacio interno: 0.9rem arriba/abajo, 2rem izquierda/derecha */
+  border-radius: 8px;           /* Esquinas suavemente redondeadas */
   
+  /* Limpieza de estilos por defecto del navegador */
+  text-decoration: none;        /* Quita el subrayado si usas etiqueta <a> */
+  border: none;                 /* Quita el borde gris si usas etiqueta <button> */
+  
+  /* Tipografía e interacción */
   font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: 600;             /* Seminegrita, más elegante que 'bold' puro */
+  cursor: pointer;              /* Muestra la mano de clic al pasar el ratón */
+  
+  /* Anima suavemente tanto el color como el movimiento al interactuar */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+
+/* ==========================================================================
+   4. ESTADOS INTERACTIVOS (Pseudoclases)
+   ========================================================================== */
+
+/* Se activa cuando el usuario pasa el ratón por encima */
 .hero-button:hover {
-  background-color: #fc6fcb;
+  background-color: #fc6fcb;    /* Tono rosa más claro */
+  transform: translateY(-2px);  /* Eleva el botón 2 píxeles dando sensación táctil */
+}
+
+/* Se activa en el instante exacto en que se hace clic */
+.hero-button:active {
+  transform: translateY(0);     /* Devuelve el botón a su sitio al presionarlo */
 }
